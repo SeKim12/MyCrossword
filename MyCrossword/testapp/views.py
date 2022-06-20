@@ -16,7 +16,7 @@ from django.core.exceptions import ObjectDoesNotExist
 @api_view(['PATCH'])
 def press_button(request, pk):
     button_count, _ = ButtonCount.objects.get_or_create(
-        pk=pk, defaults={'name': pk, 'frequency': 0})
+        pk=pk, defaults={'frequency': 0})
     serializer = ButtonCountSerializer(
         button_count,
         data={
