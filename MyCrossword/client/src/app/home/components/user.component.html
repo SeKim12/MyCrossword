@@ -1,0 +1,15 @@
+<label for="uid"> Enter Username: </label>
+<input type="text" id="uid" [(ngModel)]="uid" /><br /><br />
+<h3>Mark me as visited!</h3>
+<button type="button" (click)="updateUser()">Click Me!</button>
+<h3>...or check how many times this user visited!</h3>
+<button type="button" (click)="getUser(); display = true">Click Me!</button
+><br /><br />
+<div *ngIf="display && (user$ | async) as user">
+  <b>Information for user {{ user?.uid }}</b>
+  <ul>
+    <li>This User's Id is {{ user?.uid }}</li>
+    <li>This User visited {{ user?.visitNum || 0 }} times</li>
+    <li *ngIf="!user?.visitNum">Seems like this user is new!</li>
+  </ul>
+</div>

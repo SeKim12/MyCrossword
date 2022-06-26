@@ -1,0 +1,22 @@
+FROM python:3.10-slim
+
+RUN apt-get update && apt-get install -y libpq-dev python-dev gcc
+
+RUN pip install -U pip poetry
+
+# creates working directory
+RUN mkdir -p /app/src
+WORKDIR /app/src
+
+# installs dependencies
+COPY ../myCrossword/server/poetry.lock ../myCrossword/server/pyproject.toml ./
+
+RUN poetry export --without-hashes --format=requirements.txt > requirements.txt
+RUN pip install --no-deps -r requirements.txt
+
+
+## copies django backend folders
+#ADD ../myCrossword/core ./
+#COPY ../scripts/runserver.sh ./
+
+EXPOSE 8080 8081 5432
