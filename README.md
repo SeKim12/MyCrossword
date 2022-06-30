@@ -7,7 +7,7 @@ MyCrossword is a crossword puzzle web game based on Django and Angular.
 ## Quick Start
 ```bash
 # to start
-$ ./scripts/quickstart # -r flag to reset database
+$ ./scripts/quickstart.sh # -r flag to reset database
 
 # to quit
 $ docker-compose -f ./docker/docker-compose.yml down
