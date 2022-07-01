@@ -31,6 +31,7 @@ services:
     ports:
       - "8080:8080"
     environment:
+      HOST: db
       POSTGRES_NAME: crossword
       POSTGRES_USER: crossword
       POSTGRES_PASSWORD: crossword

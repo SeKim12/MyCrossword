@@ -13,6 +13,35 @@ $ ./scripts/quickstart.sh # -r flag to reset database
 $ docker-compose -f ./docker/docker-compose.yml down
 ```
 
+## Staring w/o Docker
+Before starting, make sure to have psql and all the dependencies installed, specifically, 
+```bash 
+# install django dependencies
+$ cd MyCrossword/myCrossword/server
+$ poetry install
+
+# install angular dependencies
+$ cd MyCrossword/myCrossword/client
+$ npm i
+
+# check if psql is installed 
+psql --version 
+```
+```bash
+# first, start database
+$ ./scripts/start-psql.sh # -r flag to reset database
+
+# next, start django server
+$ cd MyCrossword/myCrossword/server
+$ python3 manage.py makemigrations # apply model changes
+$ python3 manage.py migrate # apply migrations if db reset
+$ python3 manage.py runserver 8080 # start
+
+# finally, start angular
+$ cd MyCrossword/myCrossword/client
+$ ng serve --host 0.0.0.0 --poll=2000 --port 4200 --disable-host-check
+```
+
 ## Developing with Docker
 1. Make sure to have installed docker and docker-compose
 2. the `quickstart` above pulls relevant images from docker hub, and starts three containers:
