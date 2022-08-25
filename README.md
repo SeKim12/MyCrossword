@@ -1,4 +1,5 @@
 # MyCrossword
+Currently WIP due to other commitments, but will revisit. 
 
 MyCrossword is a crossword puzzle web game based on Django and Angular.
 ## Requirements
